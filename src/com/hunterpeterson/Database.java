@@ -66,7 +66,7 @@ public class Database {
 
 
     public static void insert(String username, String password, String weight, String age, String sex, String activity) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         String query = " INSERT INTO logininfo (username, pass, weight, sex, age, activity)" + " VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString (1, username);
@@ -80,7 +80,7 @@ public class Database {
     }
 
     public static void insert(String username, String password) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         String query = " INSERT INTO logininfo (username, pass)" + " VALUES (?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString (1, username);
@@ -89,7 +89,7 @@ public class Database {
     }
 
     public static void updatePassword(String username, String password) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         String query = " UPDATE logininfo SET pass = ? WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString (1, password);
@@ -99,7 +99,7 @@ public class Database {
     }
 
     public static boolean contains(String username) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
 
         Statement statement = connection.createStatement();
 
@@ -115,7 +115,7 @@ public class Database {
 
     public static ArrayList<String> getUsers () throws SQLException {
         ArrayList<String> usernames = new ArrayList<String>();
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select username from logininfo");
 
@@ -127,7 +127,7 @@ public class Database {
 
     public static ArrayList<String> getPasswords () throws SQLException {
         ArrayList<String> passwords = new ArrayList<String>();
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select pass from logininfo");
 
@@ -139,7 +139,7 @@ public class Database {
 
     public static ArrayList<String> getWeights () throws SQLException {
         ArrayList<String> weights = new ArrayList<String>();
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select weight from logininfo");
 
@@ -151,7 +151,7 @@ public class Database {
 
     public static ArrayList<String> getSexes () throws SQLException {
         ArrayList<String> sexes = new ArrayList<String>();
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select sex from logininfo");
 
@@ -163,7 +163,7 @@ public class Database {
 
     public static ArrayList<String> getAges () throws SQLException {
         ArrayList<String> ages = new ArrayList<String>();
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select age from logininfo");
 
@@ -175,7 +175,7 @@ public class Database {
 
     public static ArrayList<String> getActivities () throws SQLException {
         ArrayList<String> activities = new ArrayList<String>();
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select activity from logininfo");
 
@@ -187,7 +187,7 @@ public class Database {
 
 
     public static void updateWeight(String username, String weight) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         String query = " UPDATE logininfo SET weight = ? WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt (1, Integer.parseInt(weight));
@@ -197,7 +197,7 @@ public class Database {
     }
 
     public static void updateAge(String username, String age) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         String query = " UPDATE logininfo SET age = ? WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt (1, Integer.parseInt(age));
@@ -207,7 +207,7 @@ public class Database {
     }
 
     public static void updateSex(String username, String sex) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         String query = " UPDATE logininfo SET sex = ? WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString (1, sex);
@@ -217,7 +217,7 @@ public class Database {
     }
 
     public static void updateActivity(String username, String activity) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", "");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctutorial", "root", System.getenv("PASSWORD"));
         String query = " UPDATE logininfo SET activity = ? WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString (1, activity);
